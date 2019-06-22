@@ -1,36 +1,48 @@
 {
   "name": "sweden-national-id",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Validation for swedish national id numbers.",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "validate",
+    "swedish",
+    "personnummer",
+    "ssn",
+    "social",
+    "security",
+    "number",
+    "social security number",
+    "national id number"
+  ],
+  "author": {
+    "name": "Martin Askestad",
+    "email": "m@rtin.nu"
+  },
+  "license": "MIT",
   "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
     "@types/jasmine": "^3.3.13",
     "@types/node": "^12.0.10",
+    "husky": "^2.4.1",
     "jasmine": "^3.4.0",
     "karma": "^4.1.0",
     "karma-jasmine": "^2.0.1",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-typescript": "^4.1.0",
+    "lint-staged": "^8.2.1",
     "phantomjs": "^2.1.7",
     "prettier": "^1.18.2",
+    "semantic-release": "^15.13.16",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typedoc": "^0.14.2",
     "typescript": "^3.5.2"
-  },
-  "dependencies": {
-    "@commitlint/cli": "^8.0.0",
-    "@commitlint/config-conventional": "^8.0.0",
-    "husky": "^2.4.1",
-    "lint-staged": "^8.2.1",
-    "semantic-release": "^15.13.16"
   },
   "husky": {
     "hooks": {
