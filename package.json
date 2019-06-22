@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Validation for swedish national id numbers.",
   "main": "./dist/index.js",
+  "homepage": "https://github.com/MartinAskestad/sweden-national-id",
   "scripts": {
     "test": "karma start",
     "prebuild": "karma start --single-run",
     "build": "tsc",
-    "semantic-release": "semantic-release --dry-run"
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "validate",
