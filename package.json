@@ -5,7 +5,9 @@
   "main": "./dist/index.js",
   "scripts": {
     "test": "karma start",
-    "build": "tsc"
+    "prebuild": "karma start --single-run",
+    "build": "tsc",
+    "semantic-release": "semantic-release --dry-run"
   },
   "keywords": [
     "validate",
