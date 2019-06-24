@@ -33,7 +33,7 @@ const { parse } from 'sweden-national-id';
 parse('850823-6463'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6463' }
 
 // Co-ordination number
-parse('850863-6460'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6460' }
+parse('850863-6460'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850863-6460' }
 
 // Person over 100 years
 parse('850863+6460'); // { dateOfBirth: 1885-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823+6460' }
