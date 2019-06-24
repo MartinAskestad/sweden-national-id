@@ -46,6 +46,6 @@ describe("National id number", () => {
   });
 
   it("should return null if validation of luhn fails", () => {
-    expect(parse("791314-2013")).toBe(null);
+    expect(parse("791114-2013")).toEqual(null);
   });
 });
