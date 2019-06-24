@@ -42,7 +42,7 @@ describe("National id number", () => {
   });
 
   it("should return null if invalid birth date", () => {
-    expect(parse("791314-2011")).toEqual(null);
+    expect(parse("791314-2019")).toEqual(null);
   });
 
   it("should return null if validation of luhn fails", () => {
