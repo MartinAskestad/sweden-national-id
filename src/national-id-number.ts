@@ -1,4 +1,5 @@
 import { format } from "./format";
+import { validate } from "./luhn";
 import { parseDateOfBirth } from "./parse-date-of-birth";
 import { toFourDigitYear } from "./to-four-digit-year";
 
@@ -34,6 +35,9 @@ export function parse(value: string): INationalIdNumber | null {
       break;
     default:
       throw new Error("unknown format");
+  }
+  if (!validate(idNumber.substr(2))) {
+    return null;
   }
   const dateOfBirth = parseDateOfBirth(idNumber.substr(0, 8));
   if (isNaN((dateOfBirth as unknown) as number)) {

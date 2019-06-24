@@ -2,7 +2,7 @@ import { Gender, parse } from "./national-id-number";
 
 describe("National id number", () => {
   it("should return null if no id number is given", () => {
-    expect(function() {
+    expect(() => {
       parse("");
     }).toThrow(new Error("value is null or empty"));
   });
@@ -36,12 +36,16 @@ describe("National id number", () => {
   });
 
   it("should throw an error if unknown format is given", () => {
-    expect(function() {
+    expect(() => {
       parse("791114-2011AA");
     }).toThrow(new Error("unknown format"));
   });
 
   it("should return null if invalid birth date", () => {
     expect(parse("791314-2011")).toEqual(null);
+  });
+
+  it("should return null if validation of luhn fails", () => {
+    expect(parse("791314-2013")).toBe(null);
   });
 });
