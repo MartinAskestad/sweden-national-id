@@ -1,5 +1,6 @@
 /**
- * Validates a swedish national id number.
+ * Validates a number according to the Luhn algorithm.
+ * @see https://en.m.wikipedia.org/wiki/Luhn_algorithm
  * @param value the national id number to be validated.
  */
 export function validate(value: string): boolean {
