@@ -1,6 +1,10 @@
 import { format } from "./format";
 
 describe("Format national id number", () => {
+  it("should format a 12-digit id number of a hundred year old", () => {
+    expect(format("188508236463")).toBe("850823+6463");
+  });
+
   it("should format a 12-digit id number", () => {
     expect(format("198508236463")).toBe("850823-6463");
   });
