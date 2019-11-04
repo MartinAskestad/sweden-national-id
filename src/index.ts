@@ -1,1 +1,7 @@
-export { parse } from "./national-id-number";
+export {
+  CorporateIdNumberType,
+  Gender,
+  INationalIdNumber,
+  parse,
+  PersonalNumberType
+} from "./national-id-number";
