@@ -12,7 +12,7 @@ jobs:
           node-version: 12
 
       - run: npm ci
-      - run: npm build
+      - run: npm run build
       - run: npm run semantic-release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
