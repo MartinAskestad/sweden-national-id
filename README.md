@@ -15,14 +15,22 @@ Install with npm
 ### JavaScript
 
 ```js
-var swedenId = require("sweden-national-id");
+var swedenNationalId = require("sweden-national-id");
 
 // National id number
-swedenId.parse("850823-6463"); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6463' }
+swedenNationalId.parse("850823-6463"); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6463' }
 
 // Co-ordination number
-swedenId.parse("850863-6460"); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6460' }
+swedenNationalId.parse("850863-6464"); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6460' }
+
+// Corporate id number
+swedenNationalId.parse("556036-0793"); // { nationalIdNumber: "556036-0793", numberType: 5 }
+
+// Invalid number
+swedenNationalId.parse("850823-6464"); // null
 ```
+
+[Test on runkit](https://runkit.com/martinaskestad/sweden-national-id)
 
 ### TypeScript
 
@@ -33,11 +41,17 @@ const { parse } from 'sweden-national-id';
 parse('850823-6463'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6463' }
 
 // Co-ordination number
-parse('850863-6460'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850863-6460' }
+parse('850863-6464'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850863-6460' }
 
 // Person over 100 years
-parse('850863+6460'); // { dateOfBirth: 1885-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823+6460' }
+parse('850863+6464'); // { dateOfBirth: 1885-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823+6460' }
 
 // 12-digit format of id number
 parse('198508636460'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6460' }
+
+// Corporate id number
+parse('556036-0793'); // { nationalIdNumber: "556036-0793", numberType: 5 }
+
+// Invalid number
+parse('850823-6464'); // null
 ```
