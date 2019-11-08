@@ -15,18 +15,51 @@ export enum Gender {
  * Represents the type of company of a company-id number.
  */
 export enum CorporateIdNumberType {
+  /**
+   * An estate of a deceased person. In Swedish, dödsbo.
+   */
   estate = 1, // Dödsbo
-  council = 2, // Stat, landsting, komun eller församling
+  /**
+   * A city council. In Swedish, landssting eller kommun.
+   */
+  council = 2, // Stat, landsting, kommun eller församling
+  /**
+   * A foreign company
+   */
   foreignCompany = 3, // Utländskt företag som bedriver näringsverksamhet eller äger fastigheter i Sverige
+  /**
+   * A joint-stock company.
+   */
   corporation = 5, // Aktiebolag
+  /**
+   * A partnership.
+   */
   soleTrader = 6, // Enkelt bolag
+  /**
+   * A type of credit union that exists in Sweden.
+   */
   swedishCreditUnion = 7, // Ekonomisk förening
+  /**
+   * A non profit organization.
+   */
   nonProfit = 8, // Ideel förening
+  /**
+   * A trading partnership.
+   */
   tradingPartnership = 9 // Handelsbolag, kommanditbolag, enkelt bolag
 }
 
+/**
+ * The type of id number.
+ */
 export enum PersonalNumberType {
+  /**
+   * The national id number of a private individual.
+   */
   personalNumber = 10,
+  /**
+   * The id number of a corporation of council.
+   */
   coOrdinationNumber
 }
 
@@ -38,12 +71,16 @@ export interface INationalIdNumber {
   dateOfBirth?: Date;
   /** The gender of the person if the number is a personal or co-ordination number otherwise undefined. */
   gender?: Gender;
-  /** The number formatted according to oficial formating rules. */
+  /** The number formatted according to official formating rules. */
   nationalIdNumber: string;
   /** The type of number, a personal co-ordination or corporate id number. */
   numberType: PersonalNumberType | CorporateIdNumberType;
 }
 
+/**
+ * Parses a string representing a Swedish National Id number and returns details about it.
+ * @param value The id number to parse, it can be 10, 11 or 12 characters long.
+ */
 export function parse(value: string): INationalIdNumber | null {
   if (!value) {
     throw new Error("value is null or empty");

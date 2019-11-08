@@ -8,7 +8,8 @@
     "test": "karma start",
     "prebuild": "karma start --single-run",
     "build": "tsc",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "typedoc": "typedoc"
   },
   "keywords": [
     "validate",
