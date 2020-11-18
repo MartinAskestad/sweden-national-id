@@ -43,7 +43,7 @@
     "lint-staged": "^8.2.1",
     "phantomjs": "^2.1.7",
     "prettier": "^1.18.2",
-    "semantic-release": "^15.13.24",
+    "semantic-release": "^17.2.3",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
