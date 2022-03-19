@@ -117,3 +117,12 @@ test("should identify a number as a \"council\" number", (t) => {
   };
   t.deepEqual(parse("212000-0142"), expected);
 });
+
+test("should identify a corporate id number with a leading 16", (t) => {
+  const expected: INationalIdNumber = {
+    nationalIdNumber: "556036-0793",
+    numberType: CorporateIdNumberType.corporation,
+  };
+  t.deepEqual(parse("165560360793"), expected);
+});
+

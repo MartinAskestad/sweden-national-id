@@ -98,7 +98,7 @@ export function parse(value: string): INationalIdNumber | null {
 
   if (+nationalIdNumber.substr(2, 2) >= 20) {
     return {
-      nationalIdNumber,
+      nationalIdNumber: nationalIdNumber.replace("+", "-"),
       numberType: +nationalIdNumber[0]
     };
   }
