@@ -66,7 +66,7 @@ export enum PersonalNumberType {
 /**
  * The details of the number that has been parsed.
  */
-export interface INationalIdNumber {
+export interface NationalIdNumber {
   /** The date of birth of a person if number is a personal or co-ordination number otherwise undefined. */
   dateOfBirth?: Date;
   /** The gender of the person if the number is a personal or co-ordination number otherwise undefined. */
@@ -81,7 +81,7 @@ export interface INationalIdNumber {
  * Parses a string representing a Swedish National Id number and returns details about it.
  * @param value The id number to parse, it can be 10, 11 or 12 characters long.
  */
-export function parse(value: string): INationalIdNumber | null {
+export function parse(value: string): NationalIdNumber | null {
   if (!value) {
     throw new Error("value is null or empty");
   }

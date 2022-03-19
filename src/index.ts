@@ -1,7 +1,8 @@
 export {
-  CorporateIdNumberType,
-  Gender,
-  INationalIdNumber,
-  parse,
-  PersonalNumberType
+    CorporateIdNumberType,
+    Gender,
+    NationalIdNumber,
+    parse,
+    PersonalNumberType
 } from "./national-id-number";
+

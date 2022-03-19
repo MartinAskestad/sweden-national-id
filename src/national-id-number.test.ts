@@ -2,7 +2,7 @@ import test from "ava";
 import {
     CorporateIdNumberType,
     Gender,
-    INationalIdNumber,
+    NationalIdNumber,
     parse,
     PersonalNumberType
 } from "./national-id-number";
@@ -16,7 +16,7 @@ test("should return null if no id number is given", (t) => {
 });
 
 test("should parse a valid 10-digit national id number", (t) => {
-  const expected: INationalIdNumber = {
+  const expected: NationalIdNumber = {
     dateOfBirth: new Date("1985-08-23 00:00:00"),
     gender: Gender.F,
     nationalIdNumber: "850823-6463",
@@ -28,7 +28,7 @@ test("should parse a valid 10-digit national id number", (t) => {
 
 test("should parse a valid 11-digit national id number of someone older than 100 years", (t) => {
   const res = parse("850823+6463");
-  const expected: INationalIdNumber = {
+  const expected: NationalIdNumber = {
     dateOfBirth: parseDateOfBirth("18850823"),
     gender: Gender.F,
     nationalIdNumber: "850823+6463",
@@ -38,7 +38,7 @@ test("should parse a valid 11-digit national id number of someone older than 100
 });
 
 test("should parse a valid 11-digit national id number", (t) => {
-  const expected: INationalIdNumber = {
+  const expected: NationalIdNumber = {
     dateOfBirth: new Date("1985-08-23 00:00:00"),
     gender: Gender.F,
     nationalIdNumber: "850823-6463",
@@ -48,7 +48,7 @@ test("should parse a valid 11-digit national id number", (t) => {
 });
 
 test("should parse a valid national 12-digit id number", (t) => {
-  const expected: INationalIdNumber = {
+  const expected: NationalIdNumber = {
     dateOfBirth: new Date("1985-08-23 00:00:00"),
     gender: Gender.F,
     nationalIdNumber: "850823-6463",
@@ -58,7 +58,7 @@ test("should parse a valid national 12-digit id number", (t) => {
 });
 
 test("should parse a valid co-ordination number", (t) => {
-  const expected: INationalIdNumber = {
+  const expected: NationalIdNumber = {
     dateOfBirth: new Date("1985-08-23 00:00:00"),
     gender: Gender.F,
     nationalIdNumber: "850883-6460",
@@ -68,7 +68,7 @@ test("should parse a valid co-ordination number", (t) => {
 });
 
 test("should identify the gender of a national id number as Female", (t) => {
-  const expected: INationalIdNumber = {
+  const expected: NationalIdNumber = {
     dateOfBirth: new Date("1985-08-23 00:00:00"),
     gender: Gender.F,
     nationalIdNumber: "850883-6460",
@@ -78,7 +78,7 @@ test("should identify the gender of a national id number as Female", (t) => {
 });
 
 test("should identify the gender of a national id number as Male", (t) => {
-  const expected: INationalIdNumber = {
+  const expected: NationalIdNumber = {
     dateOfBirth: new Date("1979-11-14 00:00:00"),
     gender: Gender.M,
     nationalIdNumber: "791114-2011",
@@ -103,7 +103,7 @@ test("should return null if validation of luhn fails", (t) => {
 });
 
 test("should identify a corporate id number", (t) => {
-  const expected: INationalIdNumber = {
+  const expected: NationalIdNumber = {
     nationalIdNumber: "556036-0793",
     numberType: CorporateIdNumberType.corporation,
   };
@@ -111,7 +111,7 @@ test("should identify a corporate id number", (t) => {
 });
 
 test("should identify a number as a \"council\" number", (t) => {
-  const expected: INationalIdNumber = {
+  const expected: NationalIdNumber = {
     nationalIdNumber: "212000-0142",
     numberType: CorporateIdNumberType.council,
   };
@@ -119,7 +119,7 @@ test("should identify a number as a \"council\" number", (t) => {
 });
 
 test("should identify a corporate id number with a leading 16", (t) => {
-  const expected: INationalIdNumber = {
+  const expected: NationalIdNumber = {
     nationalIdNumber: "556036-0793",
     numberType: CorporateIdNumberType.corporation,
   };
