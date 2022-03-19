@@ -1,11 +1,10 @@
+import test from "ava";
 import { padWithLeadingZero } from "./pad-with-leading-zero";
 
-describe("Pad with leading zero", () => {
-  it("should pad a single digit with a leading zero", () => {
-    expect(padWithLeadingZero(4)).toBe("04");
-  });
+test("should pad a single digit with a leading zero", (t) => {
+  t.is(padWithLeadingZero(4), "04");
+});
 
-  it("should not pad a double digit number", () => {
-    expect(padWithLeadingZero(14)).toBe("14");
-  });
+test("should not pad a double digit number", (t) => {
+  t.is(padWithLeadingZero(14), "14");
 });

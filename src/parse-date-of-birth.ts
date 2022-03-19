@@ -8,5 +8,10 @@ export function parseDateOfBirth(dateOfBirth: string): Date {
   if (day >= 32) {
     day -= 60;
   }
-  return new Date(`${year}-${month}-${padWithLeadingZero(day)}`);
+  const retval = new Date(`${year}-${month}-${padWithLeadingZero(day)} 00:0.000Z`);
+  retval.setHours(0);
+  retval.setMinutes(0);
+  retval.setSeconds(0);
+  return retval;
+
 }
