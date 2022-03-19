@@ -10,7 +10,8 @@
     "build": "tsc",
     "semantic-release": "semantic-release",
     "typedoc": "typedoc",
-    "lint": "eslint --ext .ts ./src"
+    "lint": "eslint --ext .ts ./src",
+    "prepare": "husky install"
   },
   "keywords": [
     "validate",
