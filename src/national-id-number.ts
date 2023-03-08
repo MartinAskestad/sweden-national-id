@@ -1,6 +1,10 @@
 import { format } from "./format";
 import { validate } from "./luhn";
-import { parseDateOfBirth } from "./parse-date-of-birth";
+import {
+  isFutureDate as _isFutureDate,
+  isUnder18 as _isUnder18,
+  parseDateOfBirth,
+} from "./parse-date-of-birth";
 import { toFourDigitYear } from "./to-four-digit-year";
 
 /**
@@ -8,13 +12,13 @@ import { toFourDigitYear } from "./to-four-digit-year";
  */
 export enum Gender {
   F,
-  M
+  M,
 }
 
 /**
  * Represents the type of company of a company-id number.
  */
-export enum CorporateIdNumberType {
+export const enum CorporateIdNumberType {
   /**
    * An estate of a deceased person. In Swedish, dödsbo.
    */
@@ -46,13 +50,13 @@ export enum CorporateIdNumberType {
   /**
    * A trading partnership.
    */
-  tradingPartnership = 9 // Handelsbolag, kommanditbolag, enkelt bolag
+  tradingPartnership = 9, // Handelsbolag, kommanditbolag, enkelt bolag
 }
 
 /**
  * The type of id number.
  */
-export enum PersonalNumberType {
+export const enum PersonalNumberType {
   /**
    * The national id number of a private individual.
    */
@@ -60,22 +64,35 @@ export enum PersonalNumberType {
   /**
    * The id number of a corporation of council.
    */
-  coOrdinationNumber
+  coOrdinationNumber,
 }
 
-/**
- * The details of the number that has been parsed.
+/*
+ * Details of a personal id number.
  */
-export interface NationalIdNumber {
+export type PersonalIdNumber = {
   /** The date of birth of a person if number is a personal or co-ordination number otherwise undefined. */
   dateOfBirth?: Date;
   /** The gender of the person if the number is a personal or co-ordination number otherwise undefined. */
   gender?: Gender;
   /** The number formatted according to official formating rules. */
   nationalIdNumber: string;
-  /** The type of number, a personal co-ordination or corporate id number. */
-  numberType: PersonalNumberType | CorporateIdNumberType;
-}
+  isFutureDate: boolean;
+  isUnder18: boolean;
+  numberType: PersonalNumberType;
+};
+
+/**
+ * Details of a corporate id number.
+ */
+export type CorporateIdNumber = {
+  nationalIdNumber: string;
+  numberType: CorporateIdNumberType;
+};
+/**
+ * The details of the number that has been parsed.
+ */
+export type NationalIdNumber = PersonalIdNumber | CorporateIdNumber;
 
 /**
  * Parses a string representing a Swedish National Id number and returns details about it.
@@ -99,11 +116,11 @@ export function parse(value: string): NationalIdNumber | null {
   if (+nationalIdNumber.substr(2, 2) >= 20) {
     return {
       nationalIdNumber: nationalIdNumber.replace("+", "-"),
-      numberType: +nationalIdNumber[0]
+      numberType: +nationalIdNumber[0],
     };
   }
 
-  if (isNaN((dateOfBirth as unknown) as number)) {
+  if (isNaN(dateOfBirth as unknown as number)) {
     return null;
   }
   if (hasPlus) {
@@ -114,10 +131,14 @@ export function parse(value: string): NationalIdNumber | null {
     +nationalIdNumber.substr(4, 2) > 60
       ? PersonalNumberType.coOrdinationNumber
       : PersonalNumberType.personalNumber;
+  const isFutureDate = _isFutureDate(dateOfBirth);
+  const isUnder18 = _isUnder18(dateOfBirth);
   return {
     dateOfBirth,
     gender,
     nationalIdNumber,
-    numberType
+    numberType,
+    isFutureDate,
+    isUnder18,
   };
 }

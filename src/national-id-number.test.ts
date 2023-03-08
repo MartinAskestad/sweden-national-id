@@ -1,10 +1,10 @@
 import test from "ava";
 import {
-    CorporateIdNumberType,
-    Gender,
-    NationalIdNumber,
-    parse,
-    PersonalNumberType
+  CorporateIdNumberType,
+  Gender,
+  NationalIdNumber,
+  parse,
+  PersonalNumberType,
 } from "./national-id-number";
 import { parseDateOfBirth } from "./parse-date-of-birth";
 
@@ -20,6 +20,8 @@ test("should parse a valid 10-digit national id number", (t) => {
     dateOfBirth: new Date("1985-08-23 00:00:00"),
     gender: Gender.F,
     nationalIdNumber: "850823-6463",
+    isFutureDate: false,
+    isUnder18: false,
     numberType: PersonalNumberType.personalNumber,
   };
 
@@ -32,6 +34,8 @@ test("should parse a valid 11-digit national id number of someone older than 100
     dateOfBirth: parseDateOfBirth("18850823"),
     gender: Gender.F,
     nationalIdNumber: "850823+6463",
+    isFutureDate: false,
+    isUnder18: false,
     numberType: PersonalNumberType.personalNumber,
   };
   t.deepEqual(res, expected);
@@ -42,6 +46,8 @@ test("should parse a valid 11-digit national id number", (t) => {
     dateOfBirth: new Date("1985-08-23 00:00:00"),
     gender: Gender.F,
     nationalIdNumber: "850823-6463",
+    isFutureDate: false,
+    isUnder18: false,
     numberType: PersonalNumberType.personalNumber,
   };
   t.deepEqual(parse("850823-6463"), expected);
@@ -52,6 +58,8 @@ test("should parse a valid national 12-digit id number", (t) => {
     dateOfBirth: new Date("1985-08-23 00:00:00"),
     gender: Gender.F,
     nationalIdNumber: "850823-6463",
+    isFutureDate: false,
+    isUnder18: false,
     numberType: PersonalNumberType.personalNumber,
   };
   t.deepEqual(parse("198508236463"), expected);
@@ -62,6 +70,8 @@ test("should parse a valid co-ordination number", (t) => {
     dateOfBirth: new Date("1985-08-23 00:00:00"),
     gender: Gender.F,
     nationalIdNumber: "850883-6460",
+    isFutureDate: false,
+    isUnder18: false,
     numberType: PersonalNumberType.coOrdinationNumber,
   };
   t.deepEqual(parse("850883-6460"), expected);
@@ -72,6 +82,8 @@ test("should identify the gender of a national id number as Female", (t) => {
     dateOfBirth: new Date("1985-08-23 00:00:00"),
     gender: Gender.F,
     nationalIdNumber: "850883-6460",
+    isFutureDate: false,
+    isUnder18: false,
     numberType: PersonalNumberType.coOrdinationNumber,
   };
   t.deepEqual(parse("850883-6460"), expected);
@@ -82,6 +94,8 @@ test("should identify the gender of a national id number as Male", (t) => {
     dateOfBirth: new Date("1979-11-14 00:00:00"),
     gender: Gender.M,
     nationalIdNumber: "791114-2011",
+    isFutureDate: false,
+    isUnder18: false,
     numberType: PersonalNumberType.personalNumber,
   };
   t.deepEqual(parse("791114-2011"), expected);
@@ -110,7 +124,7 @@ test("should identify a corporate id number", (t) => {
   t.deepEqual(parse("556036-0793"), expected);
 });
 
-test("should identify a number as a \"council\" number", (t) => {
+test('should identify a number as a "council" number', (t) => {
   const expected: NationalIdNumber = {
     nationalIdNumber: "212000-0142",
     numberType: CorporateIdNumberType.council,
@@ -125,4 +139,3 @@ test("should identify a corporate id number with a leading 16", (t) => {
   };
   t.deepEqual(parse("165560360793"), expected);
 });
-
