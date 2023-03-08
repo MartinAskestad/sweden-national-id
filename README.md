@@ -18,10 +18,10 @@ Install with npm
 var swedenNationalId = require("sweden-national-id");
 
 // National id number
-swedenNationalId.parse("850823-6463"); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6463' }
+swedenNationalId.parse("850823-6463"); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6463', isFutureDate: false, isUnder18: false }
 
 // Co-ordination number
-swedenNationalId.parse("850863-6464"); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6460' }
+swedenNationalId.parse("850863-6464"); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6460', isFutureDate: false, isUnder18: false }
 
 // Corporate id number
 swedenNationalId.parse("556036-0793"); // { nationalIdNumber: "556036-0793", numberType: 5 }
@@ -38,16 +38,16 @@ swedenNationalId.parse("850823-6464"); // null
 const { parse } from 'sweden-national-id';
 
 // National id number
-parse('850823-6463'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6463' }
+parse('850823-6463'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6463', isFutureDate: false, isUnder18: false }
 
 // Co-ordination number
-parse('850863-6464'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850863-6460' }
+parse('850863-6464'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850863-6460', isFutureDate: false, isUnder18: false }
 
 // Person over 100 years
-parse('850863+6464'); // { dateOfBirth: 1885-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823+6460' }
+parse('850863+6464'); // { dateOfBirth: 1885-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823+6460', isFutureDate: false, isUnder18: false }
 
 // 12-digit format of id number
-parse('198508636460'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6460' }
+parse('198508636460'); // { dateOfBirth: 1985-08-23T00:00:00.000Z, gender: 0, nationalIdNumber: '850823-6460', isFutureDate: false, isUnder18: false }
 
 // Corporate id number
 parse('556036-0793'); // { nationalIdNumber: "556036-0793", numberType: 5 }
